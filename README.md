@@ -46,4 +46,4 @@ pytest tests/
 
 ## License
 
-MIT
+© 2026 Officethree Technologies. All Rights Reserved.
