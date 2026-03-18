@@ -1,49 +1,43 @@
-# OpinionPulse
+# opinionpulse
 
-Multi-agent public opinion analysis and narrative tracking platform.
+**Multi-agent public opinion analysis assistant — track sentiment, narratives, and discourse shifts**
 
-## Features
+![Build](https://img.shields.io/badge/build-passing-brightgreen) ![License](https://img.shields.io/badge/license-proprietary-red)
 
-- **Data Collection**: Scrape Reddit, Twitter/X, and news sites for topic discussions
-- **Sentiment Analysis**: Fine-grained 5-class sentiment with aspect-based decomposition
-- **Narrative Tracking**: Identify and track evolving narratives and talking points
-- **Demographic Analysis**: Estimate opinion distribution across demographic segments
-- **Trend Detection**: Detect shifts, viral moments, and emerging topics
-- **Report Generation**: Create comprehensive reports with charts and summaries
-- **FastAPI Server**: Real-time analysis API
+## Install
+```bash
+pip install -e ".[dev]"
+```
 
 ## Quick Start
-
 ```python
-from opinionpulse.collector import DataCollector
-from opinionpulse.sentiment import SentimentAnalyzer
+from src.core import Opinionpulse
+ instance = Opinionpulse()
+r = instance.collect_data(input="test")
+```
 
-collector = DataCollector()
-posts = collector.collect_all("artificial intelligence")
-
-analyzer = SentimentAnalyzer()
-results = analyzer.batch_analyze([p.text for p in posts])
-print(f"Mean sentiment: {results['mean_score']:.2f}")
+## CLI
+```bash
+python -m src status
+python -m src run --input "data"
 ```
 
 ## API
+| Method | Description |
+|--------|-------------|
+| `collect_data()` | Collect data |
+| `analyze_sentiment()` | Analyze sentiment |
+| `track_narrative()` | Track narrative |
+| `detect_shift()` | Detect shift |
+| `generate_report()` | Generate report |
+| `get_trends()` | Get trends |
+| `get_stats()` | Get stats |
+| `reset()` | Reset |
 
+## Test
 ```bash
-uvicorn opinionpulse.api:app --port 8000
-```
-
-## Installation
-
-```bash
-pip install -e ".[full]"
-```
-
-## Testing
-
-```bash
-pytest tests/
+pytest tests/ -v
 ```
 
 ## License
-
-© 2026 Officethree Technologies. All Rights Reserved.
+(c) 2026 Officethree Technologies. All Rights Reserved.
